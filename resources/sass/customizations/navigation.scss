@@ -1,0 +1,12 @@
+nav {
+    background-color: gold !important;
+    & .nav-link {
+        color: #009;
+        border-radius: 10px;
+        
+        &:hover{
+            background-color: #d9b800;
+            color: white;
+        }
+    }
+}
