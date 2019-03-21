@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('imgs/agap.ico')}}" type="image/x-icon">
 </head>
 <body>
     <div id="app">
@@ -41,6 +42,7 @@
                     @guest
 
                     @else
+                        @if(Auth::user()->email_verified_at != null)
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="" class="nav-link">Dashboard</a>
@@ -55,6 +57,7 @@
                                 <a href="" class="nav-link">Reports</a>
                             </li>
                         </ul>
+                        @endif
                     @endguest
 
                     <!-- Right Side Of Navbar -->

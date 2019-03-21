@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{{env("APP_NAME", "AGAP Information System")}}</title>
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -13,6 +14,10 @@
         <style>
             html, body {
                 background-color: #fff;
+                background-image: url('/imgs/login-bg.png');
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -70,20 +75,19 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}" class="text-white">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}" class="text-white">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    {{env('APP_NAME', "AGAP")}}
+                <div class="title m-b-md w-25 m-auto py-5">
+                    <img src="{{asset('imgs/Logo-New.png')}}" alt="" class="img img-fluid">
                 </div>
-
                 <div class="links">
                     <a href="">Home</a>
                     <a href="">History</a>
