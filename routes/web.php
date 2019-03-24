@@ -19,3 +19,12 @@ Auth::routes(['verify'=>true]);
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=>'members'], function(){
+    Route::get('/', 'PageController@members')->name('page.member');
+});
+
+
+Route::group(['prefix'=>'account'], function(){
+    Route::get('information', 'AccountController@information')->name('page.account_info');
+});

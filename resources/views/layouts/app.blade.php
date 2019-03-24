@@ -48,7 +48,7 @@
                                 <a href="" class="nav-link">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Members</a>
+                                <a href="{{route('page.member')}}" class="nav-link">Members</a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">Events</a>
@@ -79,6 +79,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('page.account_info') }}">
+                                        {{ __('Account Information') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -96,7 +99,7 @@
             </div>
         </nav>
 
-        <main class="py-4 d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+        <main class="py-4 d-flex" style="min-height: 75vh;">
             @yield('content')
         </main>
     </div>
