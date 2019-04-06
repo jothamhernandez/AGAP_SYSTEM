@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('imgs/agap.ico')}}" type="image/x-icon">
@@ -44,6 +44,8 @@
                     @else
                         @if(Auth::user()->email_verified_at != null)
                         <ul class="navbar-nav mr-auto">
+                        
+                            @if(Auth::user()->roles->contains('role','Super Admin') || Auth::user()->roles->contains('role','Admin'))
                             <li class="nav-item">
                                 <a href="" class="nav-link">Dashboard</a>
                             </li>
@@ -51,10 +53,11 @@
                                 <a href="{{route('page.member')}}" class="nav-link">Members</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Events</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="" class="nav-link">Reports</a>
+                            </li>
+                            @endif
+                            <li class="nav-item">
+                                <a href="{{route('page.events')}}" class="nav-link">Events</a>
                             </li>
                         </ul>
                         @endif
@@ -112,5 +115,6 @@
             </div>
         </div>
     </footer>
+    @yield('scripts')
 </body>
 </html>

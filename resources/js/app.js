@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./notify.min.js');
 
 window.Vue = require('vue');
 

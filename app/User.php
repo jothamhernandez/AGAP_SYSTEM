@@ -39,4 +39,20 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = [
+        'roles'
+    ];
+
+    public function getRolesAttribute(){
+        return $this->roles()->get();
+    }
+
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role','role_users');
+    }
+
+    public function events(){
+        return $this->belongsToMany('App\Models\Event', 'registered_users');
+    }
 }

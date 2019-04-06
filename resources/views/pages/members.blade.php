@@ -24,6 +24,7 @@
                                 <tr>
                                     <th>Member</th>
                                     <th>Email</th>
+                                    <th>Verified</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -32,6 +33,7 @@
                                 <tr>
                                     <td>{{$member->first_name == null ? "N/A" : $member->first_name . " " . $member->last_name}}</td>
                                     <td><a href="mailto:{{$member->email}}">{{$member->email}}</a></td>
+                                    <td>@if($member->email_verified_at == null) <div class="badge badge-sm badge-danger">No</div> @else <div class="badge badge-sm badge-success">Yes</div> @endif</td>
                                     <td>
                                         <button class="btn btn-info btn-sm">View</button>
                                     </td>

@@ -18,8 +18,12 @@ class CreateRegisteredUsersTable extends Migration
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('fee_id');
-            $table->enum('status',['Pending','Rejected','Unpaid','Paid','Cancelled']);
+            $table->enum('status',['Pending','Rejected','Unpaid','Paid','Cancelled'])->default('Pending');
+            $table->string('supporting_doc')->nullable();
             $table->timestamps();
+
+
+            $table->unique( array('event_id','fee_id','user_id'));
         });
     }
 
