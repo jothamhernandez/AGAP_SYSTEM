@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\User;
 use App\Observers\UserObserver;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(161);
 
         User::observe(UserObserver::class);
+
+        Blade::directive('convert', function ($money) {
+            return "<?php echo number_format($money, 2); ?>";
+        });
     }
 }
