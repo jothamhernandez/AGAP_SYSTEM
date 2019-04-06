@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-12 my-3">
                     <h3>{{$event->title}}</h3>
-                    <p>{{$event->description}}</p>
+                    <p style="white-space:pre-line; word-wrap:break-word;">{{$event->description}}</p>
                 </div>
                 @if(!$registered)
                 <div class="col-md-12">

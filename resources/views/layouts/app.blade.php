@@ -53,7 +53,7 @@
                                 <a href="{{route('page.member')}}" class="nav-link">Members</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Reports</a>
+                                <a href="{{route('page.reports')}}" class="nav-link">Reports</a>
                             </li>
                             @endif
                             <li class="nav-item">

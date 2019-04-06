@@ -35,6 +35,10 @@ Route::group(['prefix'=>'members','middleware'=>['auth']], function(){
     Route::post('/add-event', 'PageController@add_event')->name('page.add-event');
 });
 
+Route::group(['prefix'=>'reports', 'middleware'=>['auth']], function(){
+    Route::get('/', 'ReportController@index')->name('page.reports');
+});
+
 
 Route::group(['prefix'=>'account'], function(){
     Route::get('information', 'AccountController@information')->name('page.account_info');

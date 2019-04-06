@@ -39,7 +39,7 @@
                                         <img src="{{asset('storage/'.$event->header_image)}}" alt="" class="img img-thumbail img-fluid"> 
                                     </figure>
                                     @endif
-                                    <p>{{$event->description}}</p>
+                                    <p>{{date('F d, Y', strtotime($event->start))}} - {{date('F d, Y', strtotime($event->end))}}</p>
                                 </div>
                                 <div class="card-footer">
                                     @if(Auth::user()->roles->contains('role','Admin') || Auth::user()->roles->contains('role','Super Admin'))
@@ -96,7 +96,7 @@
                                         <img src="{{asset('storage/'.$event->header_image)}}" alt="" class="img img-thumbail img-fluid"> 
                                     </figure>
                                     @endif
-                                    <p>{{$event->description}}</p>
+                                    <p>{{date('F d, Y', strtotime($event->start))}} - {{date('F d, Y', strtotime($event->end))}}</p>
                                 </div>
                                 <div class="card-footer">
                                     @if(Auth::user()->roles->contains('role','Admin') || Auth::user()->roles->contains('role','Super Admin'))

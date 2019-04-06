@@ -25,5 +25,11 @@ class User extends Seeder
         collect($value)->each(function($user){
             UserModel::create($user);
         });
+
+        $users = factory(App\User::class, 15)->make()->toArray();
+
+        foreach($users as $user){
+            UserModel::create($user);
+        }
     }   
 }
