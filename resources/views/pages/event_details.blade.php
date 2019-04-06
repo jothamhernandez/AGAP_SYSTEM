@@ -25,13 +25,13 @@
                 <div class="col-md-12">
                     <img src="{{asset('storage/'.$event->header_image)}}" alt="" class="img img-fluid">
                 </div>
-                <div class="col-md-12">
-                    <h1>{{$event->title}}</h1>
+                <div class="col-md-12 my-3">
+                    <h3>{{$event->title}}</h3>
                     <p>{{$event->description}}</p>
                 </div>
                 @if(!$registered)
                 <div class="col-md-12">
-                    <h1>Register</h1>
+                    <h3>Register</h3>
 
                     @foreach($fees as $fee)
                     <p>{{$fee->description}} - {{$fee->fee}} <a href="{{route('event.register', ['id'=>$event->id, 'fee'=>$fee->id])}}" class="btn btn-success">Register</a></p>
@@ -40,7 +40,7 @@
             </div>
             @else
             <div class="col-md-12">
-                <h1>Registered ({{$registered->status}})</h1>
+                <h3>Registered ({{$registered->status}})</h3>
                 <p>{{$registered->fee->description}} {{$registered->fee->fee}}</p>
             </div>
         </div>
@@ -68,7 +68,10 @@
         @else
         <div class="row">
             <div class="col-md-12">
-                <h1>Payment Proof</h1>
+            <h3>Payment Proof</h3>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                
                 <img src="{{asset('storage/'.$registered->supporting_doc)}}" alt="" class="img img-fluid">
             </div>
         </div>
