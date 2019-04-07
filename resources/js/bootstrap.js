@@ -12,6 +12,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('bootstrap-confirmation2');
+    
 } catch (e) {}
 
 /**

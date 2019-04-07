@@ -6,14 +6,33 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Reports</h1>
-            @foreach($events as $event)
-                <div>
-                    <p>Event: {{$event->title}}</p>
-                    <p>Registered: {{$event->registered->count()}}</p>
-                    <p>Paid: {{$event->paid->count()}}</p>
-                    <p>Total: {{$event->fund()}}</p>
-                </div>
-            @endforeach
+            <table class="table table-fluid table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th>Event</th>
+                        <th>Registered</th>
+                        <th>Pending Payment</th>
+                        <th>Paid</th>
+                        <th>Funds</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($events as $event)
+                    <tr class="text-center">
+                        <td>{{$event->title}}</td>
+                        <td>{{$event->registered->count()}}</td>
+                        <td>{{$event->pending->count()}}</td>
+                        <td>{{$event->paid->count()}}</td>
+                        <td>Php @convert($event->fund())</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{{route('report.print.event', ['event_id'=> $event->id])}}" target="__blank">Print Report</a>
+                            <a href="{{route('payment.review',['event_id'=>$event->id])}}" class="btn btn-primary btn-sm">View Payments</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

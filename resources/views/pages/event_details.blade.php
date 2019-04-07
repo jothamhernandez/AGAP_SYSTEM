@@ -44,7 +44,7 @@
                 <p>{{$registered->fee->description}} {{$registered->fee->fee}}</p>
             </div>
         </div>
-        @if($registered->status == "Pending" && $registered->supporting_doc == null)
+        @if(($registered->status == "Unpaid" || $registered->status == "Rejected") && $registered->supporting_doc == null)
         <form action="{{route('event.pay', ['id'=>$registered->event_id,'fee'=>$registered->fee_id])}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row align-items-center">
@@ -71,7 +71,6 @@
             <h3>Payment Proof</h3>
             </div>
             <div class="col-md-6 offset-md-3">
-                
                 <img src="{{asset('storage/'.$registered->supporting_doc)}}" alt="" class="img img-fluid">
             </div>
         </div>
