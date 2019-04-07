@@ -45,7 +45,7 @@ class PageController extends Controller
 
         // dd($request->hasFile('header_image'));
         if($request->hasFile('header_image')){
-            $data['header_image'] = $request->header_image->store('events_images');
+            $data['header_image'] = $request->header_image->store($request->input('title').'/events_images');
         }
 
         // dd($data);

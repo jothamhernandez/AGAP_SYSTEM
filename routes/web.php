@@ -40,6 +40,11 @@ Route::group(['prefix'=>'reports', 'middleware'=>['auth']], function(){
     Route::get('/print/{event_id}', 'ReportController@export')->name('report.print.event');
 });
 
+Route::group(['prefix'=>'payments', 'middleware'=>['auth']], function(){
+    Route::get('review/{event_id}', 'PaymentController@review')->name('payment.review');
+    Route::post('review/{registered_id}', 'PaymentController@paid')->name('payment.paid');
+});
+
 
 Route::group(['prefix'=>'account'], function(){
     Route::get('information', 'AccountController@information')->name('page.account_info');

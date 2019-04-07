@@ -16,6 +16,11 @@ class Event extends Model
     public function registered(){
         return $this->hasMany('App\Models\RegisteredUser', 'event_id');
     }
+
+    public function pending(){
+        return $this->hasMany('App\Models\RegisteredUser','event_id')->where('supporting_doc','!=',null)->where('status','Pending');
+    }
+
     public function paid(){
         return $this->hasMany('App\Models\RegisteredUser', 'event_id')->where('status','Paid');
     }

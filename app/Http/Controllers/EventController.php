@@ -43,9 +43,10 @@ class EventController extends Controller
 
     public function pay(Request $request, $id, $fee){
         $registeredUser = RegisteredUser::where(['event_id'=>$id,'user_id'=>$request->user()->id,'fee_id'=>$fee])->first();
-
+        $event = Event::find($id);
         if($request->hasFile('supporting_docs')){
-            $registeredUser->supporting_doc = $request->supporting_docs->store('deposit_slips');
+            $registeredUser->supporting_doc = $request->supporting_docs->store($event->title . '/deposit_slips');
+            $registeredUser->status = 'Pending';
             $status = ['message'=>'document successfully submitted', 'class'=>'success'];
             $registeredUser->save();
         } else {

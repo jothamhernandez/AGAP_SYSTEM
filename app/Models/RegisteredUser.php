@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Mohsentm\EnumValue;
 
 class RegisteredUser extends Model
 {
     //
+    use EnumValue;
 
     public function fee(){
         return $this->belongsTo('App\Models\EventFee', 'fee_id');
