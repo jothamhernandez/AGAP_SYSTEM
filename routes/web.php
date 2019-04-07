@@ -37,6 +37,7 @@ Route::group(['prefix'=>'members','middleware'=>['auth']], function(){
 
 Route::group(['prefix'=>'reports', 'middleware'=>['auth']], function(){
     Route::get('/', 'ReportController@index')->name('page.reports');
+    Route::get('/print/{event_id}', 'ReportController@export')->name('report.print.event');
 });
 
 

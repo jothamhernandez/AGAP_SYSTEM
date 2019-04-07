@@ -24,7 +24,7 @@
                         <td>{{$event->paid->count()}}</td>
                         <td>Php @convert($event->fund())</td>
                         <td>
-                            <button class="btn btn-primary btn-sm">Print Report</button>
+                            <a class="btn btn-primary btn-sm" href="{{route('report.print.event', ['event_id'=> $event->id])}}" target="__blank">Print Report</a>
                         </td>
                     </tr>
                 @endforeach
