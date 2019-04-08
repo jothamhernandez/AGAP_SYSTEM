@@ -37,7 +37,7 @@ class PaymentController extends Controller
             $registered->status = $request->input('status');
             $status = ['message'=>'status successfully updated','class'=>'success'];
         }
-        // $registered->save();
+        $registered->save();
 
         $referrer = $request->headers->get('referer');
         return redirect($referrer)->with($status);
