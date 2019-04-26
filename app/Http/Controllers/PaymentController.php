@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\RegisteredUser;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\NotifyEventStatus;
+use App\User;
 
 class PaymentController extends Controller
 {
@@ -22,6 +24,11 @@ class PaymentController extends Controller
         if($registered->status == "Pending" && $request->input('status') == "Rejected"){
             Storage::delete($registered->supporting_doc);
             $registered->supporting_doc = null;
+        }
+
+        if($request->input('status') == "Paid"){
+            $user = User::find($registered->user_id);
+            $user->notify(new NotifyEventStatus($registered));
         }
 
         if($registered->status == $request->input('status')){

@@ -50,3 +50,8 @@ Route::group(['prefix'=>'account'], function(){
     Route::get('information', 'AccountController@information')->name('page.account_info');
     Route::post('update-information','AccountController@update_information')->name('page.update-account');
 });
+
+
+Route::group(['prefix'=>'mail'], function(){
+    
+});
