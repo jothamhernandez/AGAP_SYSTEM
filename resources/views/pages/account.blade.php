@@ -2,7 +2,17 @@
 
 
 @section('content')
+
     <div class="container">
+        @if(session('message'))
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-{{session('class')}}" role="alert">
+                    {{session('message')}}
+                </div>
+            </div>
+        </div>
+        @endif
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="card card-default">
@@ -89,6 +99,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <select name="agency_id" id="" class="form-control">
+                                        <option value="">--SELECT--</option>
                                         @foreach($agencies as $agency)
                                         <option value="{{$agency->id}}" {{ ($agency->id == $user_info->agency_id) ? 'selected' : ''}}>{{$agency->name}}</option>
                                         @endforeach
