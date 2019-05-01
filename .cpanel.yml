@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/agaporgph/repositories/AGAP_SYSTEM
+    - /bin/php7.2 artisan migrate
