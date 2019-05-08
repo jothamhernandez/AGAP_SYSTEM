@@ -65,6 +65,15 @@ Route::group(['prefix'=>'mail'], function(){
     
 });
 
-Route::get('/clear-cache', function(){
-    Artisan::call('cache:clear');
+
+
+
+Route::group(['prefix'=>'artisan'], function(){
+    Route::get('migrate', function(){
+        Artisan::call('migrate:fresh');
+    });
+
+    Route::get('/clear-cache', function(){
+        Artisan::call('cache:clear');
+    });
 });
