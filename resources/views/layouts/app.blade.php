@@ -121,7 +121,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                        <strong>Copyright &copy; {{ Carbon\Carbon::now()->format('Y')}} - Association of Government Accountants of the Philippines by <a href="https://www.pinwheel-developers.com" style="color: white">Pinwheel-Developers</a></strong>
+                        <strong>Copyright &copy; {{ Carbon\Carbon::now()->format('Y')}} - Association of Government Accountants of the Philippines @if(env('WITH_FOOTER', 0)) by  <a href="https://www.pinwheel-developers.com" style="color: white">Pinwheel-Developers</a> @endif</strong>
                 </div>
             </div>
         </div>
