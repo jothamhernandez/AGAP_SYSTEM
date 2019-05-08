@@ -35,6 +35,15 @@ Route::group(['prefix'=>'members','middleware'=>['auth','completely_verified']],
     Route::post('/add-event', 'PageController@add_event')->name('page.add-event');
 });
 
+Route::group(['prefix'=>'departments','middleware'=>['auth','super_admin']], function(){
+    Route::get('/', 'DepartmentController@index')->name('page.departments');
+});
+
+Route::group(['prefix'=>'agencies','middleware'=>['auth','super_admin']], function(){
+    Route::get('/', 'AgencyController@index')->name('page.agencies');
+    Route::post('/import','ImportController@import_agencies')->name('agency.import');
+});
+
 Route::group(['prefix'=>'reports', 'middleware'=>['auth','super_admin']], function(){
     Route::get('/', 'ReportController@index')->name('page.reports');
     Route::get('/print/{event_id}', 'ReportController@export')->name('report.print.event');

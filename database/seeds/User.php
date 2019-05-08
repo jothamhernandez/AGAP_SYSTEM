@@ -18,6 +18,7 @@ class User extends Seeder
                     'username'=>'jotham19',
                     'email'=>'jotham_hernandez@hotmail.com',
                     'password'=>bcrypt('Admin123456*'),
+                    'email_verified_at'=>\Carbon\Carbon::now(),
                     'api_token'=>str_random(16)
                 ]
             ];
@@ -26,10 +27,10 @@ class User extends Seeder
             UserModel::create($user);
         });
 
-        $users = factory(App\User::class, 15)->make()->toArray();
+        // $users = factory(App\User::class, 15)->make()->toArray();
 
-        foreach($users as $user){
-            UserModel::create($user);
-        }
+        // foreach($users as $user){
+        //     UserModel::create($user);
+        // }
     }   
 }

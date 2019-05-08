@@ -50,6 +50,12 @@
                                 <a href="" class="nav-link">Dashboard</a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{route('page.departments')}}" class="nav-link">Departments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('page.agencies')}}" class="nav-link">Agencies</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{route('page.member')}}" class="nav-link">Members</a>
                             </li>
                             <li class="nav-item">
