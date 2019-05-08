@@ -70,7 +70,11 @@ Route::group(['prefix'=>'mail'], function(){
 
 Route::group(['prefix'=>'artisan'], function(){
     Route::get('migrate', function(){
-        Artisan::call('migrate:fresh');
+        if(Artisan::call('migrate:fresh --seed')){
+            echo "migrated fresh and seeded";
+        } else {
+            echo "Not able to migrate";
+        }
     });
 
     Route::get('/clear-cache', function(){
