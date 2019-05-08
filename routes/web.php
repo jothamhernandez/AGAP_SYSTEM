@@ -69,15 +69,29 @@ Route::group(['prefix'=>'mail'], function(){
 
 
 Route::group(['prefix'=>'artisan'], function(){
-    Route::get('migrate', function(){
-        if(Artisan::call('migrate:fresh --seed')){
-            echo "migrated fresh and seeded";
-        } else {
-            echo "Not able to migrate";
-        }
+    Route::group(['prefix'=>'migrate'], function(){
+        Route::get('/', function(){
+            Artisan::call('migrate:fresh');
+        });
+
+        Route::get('rollback', function(){
+            Artisan::call('migrate:rollback');
+        });
+
+        Route::get('seed', function(){
+            if(Artisan::call('migrate:fresh --seed')){
+                echo "migrated fresh and seeded";
+            } else {
+                echo "Not able to migrate";
+            }
+        });
     });
 
-    Route::get('/clear-cache', function(){
+    Route::get('clear-cache', function(){
         Artisan::call('cache:clear');
+    });
+
+    Route::get('inspire', function(){
+        echo Artisan::call('inspire');
     });
 });
