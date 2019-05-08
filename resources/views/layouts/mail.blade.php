@@ -25,7 +25,7 @@
 <body style="background-color: whitesmoke;">
     <div id="app">
         <div class="container">
-            <div class="row" style="width: 100px; margin:auto; padding: 30px;">
+            <div class="row" style="width: 200px; margin:auto; padding: 30px;">
                 <img src="{{asset('imgs/Logo-New.png')}}" alt="" style="width: 100%;">
             </div>
             <div class="row">

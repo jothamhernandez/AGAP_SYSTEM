@@ -45,6 +45,10 @@
                     </div>
                     <div class="card-body">
                         <form action="{{route('page.update-account')}}" method="POST">
+                            
+                            <div class="form-group">
+                                <p class="small text-right"><span style="color: red;">*</span> All information that will given by the user will be verified by AGAP staff and will be used as your information for your future transactions with AGAP. <br>Kindly complete the form with all honesty.</p>
+                            </div>
                             @csrf
                             <div class="form-group row">
                                 <div class="col-md-3 col-form-label text-right">
