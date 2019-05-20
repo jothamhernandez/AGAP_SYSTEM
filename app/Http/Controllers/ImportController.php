@@ -21,11 +21,7 @@ class ImportController extends Controller
 
         collect($collection[0])->each(function($row, $index){
             if($department = Department::where('display_name', $row['department'])->first()){
-<<<<<<< HEAD
-                if($agency = Agency::where('name',$row['agency'])->first()){
-=======
                 if($agency = Agency::where('name',$row['agency'])->where('sector', $row['department'])->first()){
->>>>>>> master
                     $agency->department_id = $department->id;
                     $agency->save();
                 } else {
