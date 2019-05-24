@@ -6,7 +6,7 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h1>Members</h1></div>
+                    <div class="card-header"><h1>Members {{$members->total()}}</h1></div>
                     <div class="card-body">
                         <form action="#" method="GET">
                             <div class="from-group row">
@@ -25,6 +25,8 @@
                                     <th>Member</th>
                                     <th>Email</th>
                                     <th>Verified</th>
+                                    <th>Department</th>
+                                    <th>Agency</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -34,6 +36,8 @@
                                     <td>{{$member->first_name == null ? "N/A" : $member->first_name . " " . $member->last_name}}</td>
                                     <td><a href="mailto:{{$member->email}}">{{$member->email}}</a></td>
                                     <td>@if($member->email_verified_at == null) <div class="badge badge-sm badge-danger">No</div> @else <div class="badge badge-sm badge-success">Yes</div> @endif</td>
+                                    <td>{{$member->display_name}}</td>
+                                    <td>{{$member->name}}</td>
                                     <td>
                                         <button class="btn btn-info btn-sm">View</button>
                                     </td>

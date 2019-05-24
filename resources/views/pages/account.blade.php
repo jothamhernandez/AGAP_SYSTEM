@@ -13,7 +13,7 @@
             </div>
         </div>
         @endif
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="card card-default">
                     <div class="card-header agap-primary-color">
@@ -117,6 +117,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+
+           
+        </div> -->
+        <account-form></account-form>
     </div>
 @endsection

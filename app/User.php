@@ -63,6 +63,4 @@ class User extends Authenticatable implements MustVerifyEmail
     public function agency(){
         return $this->hasOneThrough('App\Models\UserInfo','App\Models\Agency');
     }
-
-    
 }

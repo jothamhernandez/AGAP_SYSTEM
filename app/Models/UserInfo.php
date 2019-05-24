@@ -11,14 +11,10 @@ class UserInfo extends Model
 
 
     public function agency(){
-        return $this->belongsTo('App\Models\Agency', 'agency_id','id');
+        return $this->belongsTo('App\Models\Agency', 'agency_id')->with('department');
     }
 
     public function fullname(){
         return $this->first_name . ' ' . $this->last_name;
-    }
-
-    public function department(){
-        return $this->hasOneThrough('App\Models\Department','App\Models\Agency', 'department_id','id');
     }
 }

@@ -17,7 +17,10 @@ class PageController extends Controller
         $members = User::query()
                         ->leftJoin('user_infos','users.id','=','user_infos.user_id')
                         ->leftJoin('role_users','role_users.user_id','=','users.id')
-                        ->leftJoin('roles','roles.id','=','role_users.role_id');
+                        ->leftJoin('roles','roles.id','=','role_users.role_id')
+                        ->leftJoin('agencies','user_infos.agency_id','=','agencies.id')
+                        ->leftJoin('departments','agencies.department_id','=','departments.id');
+        
 
         if(@$request->input('key'))
             $members->where('first_name','like','%'.$request->input('key').'%')
@@ -28,7 +31,6 @@ class PageController extends Controller
         $members->where('roles.role','Member');
 
         $members = $members->paginate(15);
-        
         return view('pages.members')->with(['members'=>$members]);
     }
 
