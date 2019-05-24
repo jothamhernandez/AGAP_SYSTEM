@@ -17,4 +17,8 @@ class UserInfo extends Model
     public function fullname(){
         return $this->first_name . ' ' . $this->last_name;
     }
+
+    public function department(){
+        return $this->hasOneThrough('App\Models\Department','App\Models\Agency', 'department_id','id');
+    }
 }

@@ -28,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token'
     ];
 
     /**
@@ -59,4 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function events(){
         return $this->belongsToMany('App\Models\Event', 'registered_users');
     }
+
+    public function agency(){
+        return $this->hasOneThrough('App\Models\UserInfo','App\Models\Agency');
+    }
+
+    
 }
