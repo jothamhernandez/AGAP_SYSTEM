@@ -94,4 +94,8 @@ Route::group(['prefix'=>'artisan'], function(){
     Route::get('inspire', function(){
         echo Artisan::call('inspire');
     });
+
+    Route::get('storage-link', function(){
+        echo Artisan::call('storage:link');
+    });
 });
