@@ -98,4 +98,13 @@ Route::group(['prefix'=>'artisan'], function(){
     Route::get('storage-link', function(){
         echo Artisan::call('storage:link');
     });
+
+    Route::get('up', function(){
+        echo Artisan::call('up');
+    });
+
+    Route::get('down', function(){
+        echo Artisan::call('down');
+    });
+
 });

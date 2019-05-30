@@ -128,7 +128,7 @@ export default {
             axios.get(`/api/v1/user/info/${data.data.id}`).then( info =>{
                 
                 this.user = info.data;
-                this.form.department = this.user.agency.department.id;
+                this.form.department = (this.user.agency) ? this.user.agency.department.id : 0;
             });
         });
         axios.get('/api/v1/department').then( data => {
