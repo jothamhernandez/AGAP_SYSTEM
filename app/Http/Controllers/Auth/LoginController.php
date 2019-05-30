@@ -44,4 +44,18 @@ class LoginController extends Controller
         $user->api_token = str_random(16);
         $user->save();
     }
+
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+        $user->api_token = null;
+        $user->save();
+
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/');
+    }
+
 }
