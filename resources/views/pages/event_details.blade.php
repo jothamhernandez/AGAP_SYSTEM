@@ -49,11 +49,18 @@
             @csrf
             <div class="row align-items-center">
                 <div class="col-md-6">
+                    <h3>Payments</h3>
+                    <p>For payments, kindly deposit the amount of {{$registered->fee->fee}} to our <strong>Landbank</strong> account <br>
+                        <br>
+                        <strong>Account Name: </strong> AGAP INC. <br>
+                        <strong>Branch: </strong> España Branch <br>
+                        <strong>Account Number: </strong> 003722-1001-30
+                    </p>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="submit-docs" name="supporting_docs">
                         <label class="custom-file-label" for="submit-docs">Upload Deposit Slip</label>
                     </div>
-                    <span class="small">Please upload the image of your deposit slip for us to verify your payment</span>
+                    <span class="small" style="color:red;">Please upload the image of your deposit slip for us to verify your payment</span>
                     <button href="" class="btn btn-primary btn-block mt-3 disabled" id="submit-button">
                         Upload
                     </button>
@@ -76,6 +83,17 @@
         </div>
         @endif
         @endif
+        <div class="row mt-5 text-right">
+            <div class="col-md-12">
+                <h3>Inquiries</h3>
+            </div>
+            <div class="col-md-12">
+                For Inquiries, kindly contact <strong>Ms. Lani Salas</strong><br>
+                <strong>(Smart): </strong> 0920-9776895 <br>
+                <strong>(Globe): </strong> 0977-1817500 <br>
+                <strong>Email: </strong> lsalas@dbm.gov.ph <br>
+            </div>
+        </div>
     </div>
 </div>
 
