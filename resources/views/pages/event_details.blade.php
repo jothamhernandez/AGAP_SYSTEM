@@ -19,11 +19,11 @@
         </div>
     </div>
     <div class="card card-default">
-        <div class="card-header agap-primary-color">Event Info</div>
+    <div class="card-header agap-primary-color">Event Info</div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="{{asset('storage/'.$event->header_image)}}" alt="" class="img img-fluid">
+                    <img src="{{route('image.viewer',["event",encrypt($event->id)])}}" alt="" class="img img-fluid">
                 </div>
                 <div class="col-md-12 my-3">
                     <h3>{{$event->title}}</h3>
@@ -78,7 +78,7 @@
             <h3>Payment Proof</h3>
             </div>
             <div class="col-md-6 offset-md-3">
-                <img src="{{asset('storage/'.$registered->supporting_doc)}}" alt="" class="img img-fluid">
+                <img src="{{route('image.viewer',['slip',encrypt($registered->id)])}}" alt="" class="img img-fluid">
             </div>
         </div>
         @endif

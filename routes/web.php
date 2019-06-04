@@ -65,6 +65,8 @@ Route::group(['prefix'=>'mail'], function(){
     
 });
 
+Route::get('{event}/images/{id}', "PhotoController@display_image")->name('image.viewer');
+
 
 
 

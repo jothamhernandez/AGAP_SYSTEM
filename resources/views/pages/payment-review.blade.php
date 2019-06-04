@@ -43,7 +43,7 @@
                         <td style="vertical-align: middle;">Php @convert($registered->fee->fee)</td>
                         <td style="vertical-align: middle;" class="text-center">
                             @if($registered->supporting_doc != null)
-                            <a class="btn btn-primary btn-sm btn-block" href="{{ asset('storage/' . $registered->supporting_doc) }}" target="__blank">
+                            <a class="btn btn-primary btn-sm btn-block" href="{{ route('image.viewer',['slip', encrypt($registered->id)]) }}" target="__blank">
                                 View Slip
                             </a>
                             @endif
