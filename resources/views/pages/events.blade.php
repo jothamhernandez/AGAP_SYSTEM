@@ -36,7 +36,7 @@
                                 <div class="card-body">
                                     @if($event->header_image != null)
                                     <figure>
-                                        <img src="{{asset('storage/'.$event->header_image)}}" alt="" class="img img-thumbail img-fluid"> 
+                                        <img src="{{route('image.viewer',['event',encrypt($event->id)])}}" alt="" class="img img-thumbail img-fluid"> 
                                     </figure>
                                     @endif
                                     <p>{{date('F d, Y', strtotime($event->start))}} - {{date('F d, Y', strtotime($event->end))}}</p>
@@ -93,7 +93,7 @@
                                 <div class="card-body">
                                     @if($event->header_image != null)
                                     <figure>
-                                        <img src="{{asset('storage/'.$event->header_image)}}" alt="" class="img img-thumbail img-fluid"> 
+                                        <img src="{{route('image.viewer',['event',encrypt($event->id)])}}" alt="" class="img img-thumbail img-fluid"> 
                                     </figure>
                                     @endif
                                     <p>{{date('F d, Y', strtotime($event->start))}} - {{date('F d, Y', strtotime($event->end))}}</p>
