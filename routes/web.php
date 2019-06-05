@@ -20,7 +20,7 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix'=>'super_admin','middleware'=>['super_admin']], function(){
+Route::group(['prefix'=>'super_admin','middleware'=>['auth','super_admin']], function(){
     Route::get('/', 'PageController@members')->name('page.member');
 });
 
