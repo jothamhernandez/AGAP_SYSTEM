@@ -26,6 +26,9 @@
 </head>
 <body>
     <div id="app">
+        @if(Auth::user())
+            <online-presence :user="'{{ Auth::user()->username }}'"></online-presence>
+        @endif
         <header class="agap-primary-color">
             <div class="container">
                 <div class="row py-4">
@@ -126,6 +129,7 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                         <strong>Copyright &copy; {{ Carbon\Carbon::now()->format('Y')}} - Association of Government Accountants of the Philippines @if(env('WITH_FOOTER', 0)) by  <a href="https://www.pinwheel-developers.com" style="color: white">Pinwheel-Developers</a> @endif</strong>
+                        
                 </div>
             </div>
         </div>
