@@ -18,7 +18,7 @@ export default {
         user: String
     },
     mounted(){
-        this.socket = io.connect('https://www.pinwheel-developers.com:8080');
+        this.socket = io.connect('https://www.pinwheel-developers.com:8080', {secure:true});
         // this.socket = io.connect('http://192.168.10.10:8080');
         this.socket.on('connected', (data)=>{
             console.log(data);
