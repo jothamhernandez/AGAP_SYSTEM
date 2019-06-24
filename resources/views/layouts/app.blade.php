@@ -123,7 +123,11 @@
         <main class="py-4 d-flex" style="min-height: 75vh;">
             @yield('content')
         </main>
+        @if(Auth::user()->done_instruction == 0)
+        <instruction-component></instruction-component>
+        @endif
     </div>
+
     <footer class="agap-primary-color py-4">
         <div class="container">
             <div class="row">
@@ -135,5 +139,6 @@
         </div>
     </footer>
     @yield('scripts')
+    
 </body>
 </html>

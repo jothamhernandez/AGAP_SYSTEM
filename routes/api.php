@@ -24,6 +24,8 @@ Route::group(['middleware'=>'auth:api','prefix'=>'v1'], function(){
     Route::resource('department', 'Api\Department');
     Route::resource('agency', 'Api\Agency');
 
+
+    Route::post('done-instruction', 'Api\Helpers@updateInstruction');
 });
 
 Route::group(['prefix'=>'v1','middleware'=>['auth:api']], function(){

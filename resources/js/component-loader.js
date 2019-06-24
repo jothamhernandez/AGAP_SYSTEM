@@ -3,3 +3,5 @@ Vue.component('message-box', require('./components/messagebox/MessageBoxComponen
 Vue.component('account-form', require('./components/account/AccountInformationComponent').default);
 
 Vue.component('online-presence', require('./components/websocket/OnlinePresenceComponent').default);
+
+Vue.component('instruction-component', require('./components/instruction/InstructionComponent').default);
