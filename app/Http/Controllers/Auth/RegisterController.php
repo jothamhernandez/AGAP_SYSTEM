@@ -75,5 +75,6 @@ class RegisterController extends Controller
         //
         $user->api_token = str_random(16);
         $user->save();
+        return false;
     }
 }
