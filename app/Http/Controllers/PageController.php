@@ -7,7 +7,7 @@ use App\User;
 use App\Models\Event;
 use App\Models\EventFee;
 use Carbon\Carbon;
-
+use App\Models\RegisteredUser;
 
 class PageController extends Controller
 {
@@ -37,8 +37,10 @@ class PageController extends Controller
     public function events(Request $request){
         $events = Event::all();
         $myEvents = User::with('events')->find($request->user()->id);
-
-
+        $myEvents->events = $myEvents->events->map(function($event) use ($request){
+            $event->fee = RegisteredUser::where(['event_id'=>$event->id, 'user_id'=>$request->user()->id])->first();
+            return $event;
+        });
         return view('pages.events')->with(['events'=>$events,'myEvents'=>$myEvents->events]);
     }
     

@@ -31,7 +31,7 @@
                         <div class="col-md-3">
                             <div class="card card-default">
                                 <div class="card-header agap-primary-color">
-                                    {{$event->title}} ({{$event->fee_status->status}})
+                                    {{$event->title}} ({{$event->fee->status}})
                                 </div>
                                 <div class="card-body">
                                     @if($event->header_image != null)

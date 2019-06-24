@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
     .blackbox {
         background-color: rgba(0,0,0,.5);
         position: fixed;

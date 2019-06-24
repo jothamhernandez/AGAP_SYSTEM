@@ -14,7 +14,7 @@ class EventController extends Controller
     public function view(Request $request, $id){
         $registeredUser = RegisteredUser::where(['user_id'=>$request->user()->id, 'event_id'=>$id])->first();
         // $registered = ($registeredUser != null) ? true : false;
-
+        
         return view('pages.event_details')->with(['event'=>\App\Models\Event::find($id),'fees'=>\App\Models\EventFee::where('event_id', $id)->get(), 'registered'=>$registeredUser]);
     }
 
