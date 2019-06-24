@@ -13,5 +13,6 @@ class CheckForMaintenanceMode extends Middleware
      */
     protected $except = [
         //
+        'artisan/up'
     ];
 }
