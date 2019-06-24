@@ -123,7 +123,7 @@
         <main class="py-4 d-flex" style="min-height: 75vh;">
             @yield('content')
         </main>
-        @if(Auth::user()->done_instruction == 0)
+        @if(Auth::user() && Auth::user()->done_instruction == 0)
         <instruction-component></instruction-component>
         @endif
     </div>
