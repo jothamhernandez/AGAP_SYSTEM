@@ -73,6 +73,9 @@ Route::get('{event}/images/{id}', "PhotoController@display_image")->name('image.
 Route::group(['prefix'=>'artisan'], function(){
     Route::group(['prefix'=>'migrate'], function(){
         Route::get('/', function(){
+            Artisan::call('migrate');
+        });
+        Route::get('/new', function(){
             Artisan::call('migrate:fresh');
         });
 

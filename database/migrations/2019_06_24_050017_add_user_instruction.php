@@ -15,7 +15,7 @@ class AddUserInstruction extends Migration
     {
         //
         Schema::table('users', function(Blueprint $table){
-            $table->boolean('done_instruction')->default(0);
+            $table->boolean('done_instruction')->nullable()->default(0);
         });
     }
 
