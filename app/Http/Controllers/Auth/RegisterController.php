@@ -69,4 +69,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    
+    protected function registered(Request $request, $user)
+    {
+        //
+        $user->api_token = str_random(16);
+        $user->save();
+    }
 }
