@@ -26,7 +26,7 @@
                     
                     <tr>
                         <td>Member</td>
-                        <!-- <td>Sector</td> -->
+                        <td>Department</td>
                         <td>Agency</td>
                         <td>Fee</td>
                         <td>Status</td>
@@ -38,7 +38,7 @@
                 @foreach($event->registered as $registered)
                     <tr>
                         <td style="vertical-align: middle;">{{$registered->user->info->fullname()}}</td>
-                        <!-- <td>{{$registered->user->info->agency->sector}}</td> -->
+                        <td style="vertical-align: middle;">{{$registered->user->info->agency->department->display_name}}</td>
                         <td style="vertical-align: middle;">{{$registered->user->info->agency->name}}</td>
                         <td style="vertical-align: middle;">Php @convert($registered->fee->fee)</td>
                         <td style="vertical-align: middle;" class="text-center">
