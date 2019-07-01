@@ -16,7 +16,7 @@ class EventReport implements FromCollection, WithHeadings{
 
     public function headings():array {
         return [
-            'Member','Sector','Agency','Fee','Status'
+            'Member','Sector','Agency','Registration Date','Fee','Status'
         ];
     }
 
@@ -27,6 +27,7 @@ class EventReport implements FromCollection, WithHeadings{
                 'Member'    => ($rec->user->info->fullname() != ' ') ? $rec->user->info->fullname() : $rec->user->username,
                 'Sector'    => $rec->user->info->agency->sector,
                 'Agency'    => $rec->user->info->agency->name,
+                'Registration Date' => $rec->created_at->format('Y-m-d'),
                 'Fee'       => $rec->fee->fee,
                 'Status'    => $rec->status
             ];
