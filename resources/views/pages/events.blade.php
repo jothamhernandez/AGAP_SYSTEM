@@ -17,9 +17,11 @@
                 <div class="card card-default my-3">
                     <div class="card-header agap-primary-color">
                         My Events
+                        <instruction-component :has-button="true" class="float-right"></instruction-component>
                     </div>
                     <div class="card-body">
                     <div class="row">
+                        
                         @if(count($myEvents) == 0)
                         <div class="col-md-12">
                             <div class="jumbotron text-center">

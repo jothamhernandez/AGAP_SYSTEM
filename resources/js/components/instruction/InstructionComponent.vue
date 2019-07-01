@@ -1,22 +1,25 @@
 <template>
-    <div class="blackbox" v-if="open">
-        <div class="card card-default slide">
-            <div class="card-header">
-                Instruction
-            </div>
-            <div class="card-body">
-                <div class="slide-container">
-                    <!-- <div v-for="(slide, index) in slides" :key="index"> -->
-                        <img  class="img img-fluid" :src="slides[selected].image" alt="">
-                        <p>{{slides[selected].message}}</p>
-                    <!-- </div> -->
+    <div>
+        <button v-if="hasButton" class="btn btn-primary btn-sm" @click="openInstruction">View Instruction</button>
+        <div class="blackbox" v-if="open">
+            <div class="card card-default slide">
+                <div class="card-header agap-primary-color">
+                    Instruction
                 </div>
-            </div>
-            <div class="card-footer">
-                <div class="slide-control">
-                    <button class="btn btn-primary" @click="controlHandler(0)" v-if="selected > 0 ">Prev</button>
-                    <button class="btn btn-primary" @click="controlHandler(1    )" v-if="selected < slides.length - 1">Next</button>
-                    <button class="btn btn-success float-right" v-if="done" @click="doneInstruction">Done</button>
+                <div class="card-body">
+                    <div class="slide-container">
+                        <!-- <div v-for="(slide, index) in slides" :key="index"> -->
+                            <img  class="img img-fluid" :src="slides[selected].image" alt="">
+                            <p class="black">{{slides[selected].message}}</p>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="slide-control">
+                        <button class="btn btn-primary" @click="controlHandler(0)" v-if="selected > 0 ">Prev</button>
+                        <button class="btn btn-primary" @click="controlHandler(1    )" v-if="selected < slides.length - 1">Next</button>
+                        <button class="btn btn-success float-right" v-if="done" @click="doneInstruction">Done</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -25,6 +28,9 @@
 
 <script>
 export default {
+    props: {
+        hasButton: Boolean
+    },
     data(){
         return {
             selected: 0,
@@ -71,7 +77,9 @@ export default {
         }
     },
     mounted(){
-
+        if(this.hasButton){
+            this.open = false;
+        }
     },
     methods: {
         controlHandler(direction){
@@ -95,6 +103,10 @@ export default {
             axios.post('/api/v1/done-instruction',{}).then( r =>{
                 this.open = false;
             });
+        },
+        openInstruction(){
+            this.open = true;
+            this.selected = 0;
         }
     }
 }
@@ -103,5 +115,9 @@ export default {
 <style scoped>
     .slide {
         width: 60%;
+    }
+
+    .black {
+        color: black !important;
     }
 </style>
