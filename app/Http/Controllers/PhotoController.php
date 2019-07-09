@@ -38,7 +38,19 @@ class PhotoController extends Controller
         // dd($imageFile);
         if($object){
             $file = $imageFile;
-            header('Content-type:image/jpeg');
+            $ext = explode('.',$file);
+            $ext = strtolower($ext[count($ext) - 1]);
+            
+            switch($ext){
+                case "pdf":
+                    header('Content-type:application/pdf');
+                    break;
+                case "jpeg":
+                case "jpg":
+                    header('Content-type:image/jpeg');
+                    break;
+            }
+            
             readfile($file);
         }
 

@@ -77,8 +77,12 @@
             <div class="col-md-12">
             <h3>Payment Proof</h3>
             </div>
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-8 offset-md-2">
+                @if(strtolower(explode('.',$registered->supporting_doc)[1]) == "pdf")
+                <iframe src="{{route('image.viewer',['slip',encrypt($registered->id)])}}" frameborder="0" width="100%" height="500"></iframe>
+                @else
                 <img src="{{route('image.viewer',['slip',encrypt($registered->id)])}}" alt="" class="img img-fluid">
+                @endif
             </div>
         </div>
         @endif
