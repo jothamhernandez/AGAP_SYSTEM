@@ -49,6 +49,9 @@ class PhotoController extends Controller
                 case "jpg":
                     header('Content-type:image/jpeg');
                     break;
+                case "png":
+                    header('Content-type:image/png');
+                    break;
             }
             
             readfile($file);
