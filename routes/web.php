@@ -118,10 +118,12 @@ Route::group(['prefix'=>'artisan'], function(){
 
     Route::get('up', function(){
         echo Artisan::call('up');
+        return redirect('/home');
     });
 
     Route::get('down', function(){
         echo Artisan::call('down');
+        return redirect('/home');
     });
 
 });
