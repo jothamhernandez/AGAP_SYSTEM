@@ -78,6 +78,14 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 col-form-label text-right">
+                            <label for="">Lower Level Operating Unit (LLOU):</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="llou" v-model="user.llou">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <button class="btn btn-primary float-right" @click="updateInfo">Save</button>
                     </div>

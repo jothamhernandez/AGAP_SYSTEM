@@ -73,18 +73,30 @@ Route::get('{event}/images/{id}', "PhotoController@display_image")->name('image.
 Route::group(['prefix'=>'artisan'], function(){
     Route::group(['prefix'=>'migrate'], function(){
         Route::get('/', function(){
-            Artisan::call('migrate');
+            if(!Artisan::call('migrate')){
+                echo 'migration complete';
+            } else {
+                echo 'migration failed';
+            }
         });
         Route::get('/new', function(){
-            Artisan::call('migrate:fresh');
+            if(!Artisan::call('migrate:fresh')){
+                echo 'fresh migration complete';
+            } else {
+                echo 'migration failed';
+            }
         });
 
         Route::get('rollback', function(){
-            Artisan::call('migrate:rollback');
+            if(!Artisan::call('migrate:rollback')){
+                echo 'migration rollback complete';
+            } else {
+                echo 'migration failed';
+            }
         });
 
         Route::get('seed', function(){
-            if(Artisan::call('migrate:fresh --seed')){
+            if(!Artisan::call('migrate:fresh --seed')){
                 echo "migrated fresh and seeded";
             } else {
                 echo "Not able to migrate";
