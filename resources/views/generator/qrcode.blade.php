@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Event Registration</title>
+    <title>Materials For {{$event->title}} || {{\Carbon\Carbon::createFromDate($event->start)->format('Y/m/d')}}</title>
 </head>
 <body style="height: 100vh; display: flex; justify-content: center; align-items: center; padding: 0; margin: 0;">
 <div>

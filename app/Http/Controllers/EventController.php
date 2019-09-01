@@ -96,7 +96,7 @@ class EventController extends Controller
     }
 
     public function demo(Request $request, $url){
-        $event = ['start'=>\Carbon\Carbon::now()->subDay(10),'event_materials_link'=>$url];
+        $event = ['title'=>'Event Title','start'=>\Carbon\Carbon::now()->subDay(1),'event_materials_link'=>$url];
         $event = json_decode(json_encode($event), false);
         // dd($event);
         return view('generator.qrcode')->with(['event'=>$event]);
