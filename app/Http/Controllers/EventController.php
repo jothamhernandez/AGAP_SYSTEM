@@ -9,6 +9,7 @@ use App\Models\EventFee;
 use App\Models\RegisteredUser;
 use Illuminate\Support\Facades\Validator;
 
+
 class EventController extends Controller
 {
     //
@@ -81,10 +82,16 @@ class EventController extends Controller
             $status = ['message'=>'submission of document failed', 'class'=>'warning'];
         }  
 
-        
-
-
-        
         return redirect($referrer)->with($status);
+    }
+
+    public function materials(Request $request, $id){
+        
+        $id = decrypt($id);
+
+        $event = Event::find($id);
+
+
+        return view('generator.qrcode')->with(['event'=>$event]);
     }
 }

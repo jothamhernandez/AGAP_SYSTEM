@@ -28,6 +28,11 @@
                 <div class="col-md-12 my-3">
                     <h3>{{$event->title}}</h3>
                     <p style="white-space:pre-line; word-wrap:break-word;">{{$event->description}}</p>
+
+                    @if(Auth::user()->roles->contains('role','Admin') || Auth::user()->roles->contains('role','Super Admin'))
+                    <a class="btn btn-primary" href="{{route('event.materials', encrypt($event->id))}}">Event Materials</a>
+                    @endif
+                    
                 </div>
                 @if(!$registered)
                 <div class="col-md-12">
