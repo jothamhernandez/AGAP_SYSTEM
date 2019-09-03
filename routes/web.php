@@ -36,7 +36,7 @@ Route::group(['prefix'=>'members','middleware'=>['auth','completely_verified']],
 });
 
 Route::get('event-materials/{id}', "EventController@materials")->name('event.materials');
-Route::get('event-materials/demo/{url}', "EventController@demo")->name('event.materials');
+Route::get('event-materials/demo/{url}', "EventController@demo")->name('event.materials.demo');
 
 Route::group(['prefix'=>'departments','middleware'=>['auth','super_admin']], function(){
     Route::get('/', 'DepartmentController@index')->name('page.departments');
