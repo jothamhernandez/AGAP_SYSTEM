@@ -59,6 +59,10 @@ Route::group(['prefix'=>'payments', 'middleware'=>['auth','super_admin']], funct
     Route::post('review/{registered_id}', 'PaymentController@paid')->name('payment.paid');
 });
 
+// Attendee Validator
+Route::get('validator/{event_id}', 'EventController@validator_page')->name('validator.page');
+Route::get('validator/{event_id}/{code}', 'EventController@validator')->name('validator.validate');
+
 
 Route::group(['prefix'=>'account'], function(){
     Route::get('information', 'AccountController@information')->name('page.account_info');

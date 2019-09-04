@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
@@ -98,7 +99,34 @@ class EventController extends Controller
     public function demo(Request $request, $url){
         $event = ['title'=>'Event Title','start'=>\Carbon\Carbon::now()->subDay(1),'event_materials_link'=>$url];
         $event = json_decode(json_encode($event), false);
-        // dd($event);
         return view('generator.qrcode')->with(['event'=>$event]);
+    }
+    
+    public function validator_page($event_id){
+        $event_id = decrypt($event_id);
+
+        $event = Event::find($event_id);
+
+        return view('validator.validator-page',['event'=>$event]);
+    }
+
+    public function validator($event_id, $code){
+        $event_id = decrypt($event_id);
+        $events = RegisteredUser::where('event_id', $event_id)->get();
+        $valid = $events->filter(function($event) use($code){
+            $user_code = substr(md5($event->id . $event->user_id), 10, 5);
+            return $code == $user_code;
+        })->values()[0];
+        
+        $user = User::find($valid->user_id);
+
+        if($valid->count() > 0){
+            $response = ['message'=>'welcome', 'user'=>$user->info];
+
+        } else {
+            $response = ['message'=>'not valid code'];
+        }
+
+        return response()->json($response);
     }
 }
