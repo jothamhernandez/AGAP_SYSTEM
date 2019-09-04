@@ -27,7 +27,8 @@ class Event extends Model
 
     public function fund(){
         $total = 0;
-        $paid = $this->paid()->get();
+        $paid = $this->paid()->whereNotIn('user_id',explode(',',env("EXEMPTED_USERS",'5')))
+        ->get();
         $paid->map(function($payee) use(&$total){
             $total += $payee->fee->fee;
         });

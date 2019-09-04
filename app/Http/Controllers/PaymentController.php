@@ -14,7 +14,10 @@ class PaymentController extends Controller
     //
 
     public function review(Request $request, $event_id){
-        $event = Event::where('id', $event_id)->with('registered')->first();
+        $event = Event::where('id', $event_id)->with(['registered'=>function($q){
+            $q->whereNotIn('user_id',explode(',',env("EXEMPTED_USERS",'5')));
+            $q->orderBy('status','desc');
+        }])->first();
         return view('pages.payment-review')->with(['event'=>$event]);
     }
 

@@ -12,7 +12,11 @@ class ReportController extends Controller
     //
     public function index(Request $request){
         
-        $events = Event::with(['paid','registered'])->get();
+        $events = Event::with(['paid'=>function($q){
+            $q->whereNotIn('user_id',explode(',',env("EXEMPTED_USERS",'5')));
+        },'registered'=>function($q){
+            $q->whereNotIn('user_id',explode(',',env("EXEMPTED_USERS",'5')));
+        }])->get();
         return view('pages.reports')->with('events',$events);
     }
 

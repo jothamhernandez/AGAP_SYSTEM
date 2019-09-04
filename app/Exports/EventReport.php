@@ -21,7 +21,9 @@ class EventReport implements FromCollection, WithHeadings{
     }
 
     public function collection(){
-        $data = RegisteredUser::where('event_id',$this->event_id)->with('user')->orderBy('status')->get();
+        $data = RegisteredUser::where('event_id',$this->event_id)
+        ->whereNotIn('user_id',explode(',',env("EXEMPTED_USERS",'5')))
+        ->with('user')->orderBy('status')->get();
         $data = $data->map(function($rec){
             return [
                 'Member'    => ($rec->user->info->fullname() != ' ') ? $rec->user->info->fullname() : $rec->user->username,
