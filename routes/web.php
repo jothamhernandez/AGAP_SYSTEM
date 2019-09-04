@@ -31,6 +31,8 @@ Route::group(['prefix'=>'members','middleware'=>['auth','completely_verified']],
         Route::get('register/{id}/{fee}', 'EventController@register')->name('event.register');
         Route::post('pay/{id}/{fee}', 'EventController@pay')->name('event.pay');
     });
+
+    Route::get('dashboard', 'MembersController@dashboard')->name('member.dashboard');
     
     Route::post('/add-event', 'PageController@add_event')->name('page.add-event');
 });

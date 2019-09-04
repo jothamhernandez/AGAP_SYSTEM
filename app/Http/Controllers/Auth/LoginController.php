@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\LoggedSessions;
 
 class LoginController extends Controller
 {
@@ -40,8 +41,19 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        //
         $user->api_token = str_random(16);
+        
+        if($request->ip() == "127.0.0.1"){
+            $ip = "112.206.74.227";
+            $data = (array) \Location::get($ip);
+            LoggedSessions::create(LoggedSessions::format($data, $ip));
+        } else {
+            $ip = $request->ip();
+            $data = (array) \Location::get($ip);
+
+            LoggedSessions::create(LoggedSessions::format($data, $ip));
+        }
+
         $user->save();
     }
 

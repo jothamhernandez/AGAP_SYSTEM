@@ -15,7 +15,8 @@
         "laravel/tinker": "^1.0",
         "maatwebsite/excel": "^3.1",
         "mohsentm/laravel-db-enum": "^1.0",
-        "simplesoftwareio/simple-qrcode": "^2.0"
+        "simplesoftwareio/simple-qrcode": "^2.0",
+        "stevebauman/location": "^3.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
