@@ -56,10 +56,12 @@
                     @else
                         @if(Auth::user()->email_verified_at != null)
                         <ul class="navbar-nav mr-auto">
-                        
+                            <li class="nav-item">
+                                <a href="{{route('member.dashboard')}}" class="nav-link">Dashboard</a>
+                            </li>
                             @if(Auth::user()->roles->contains('role','Super Admin') || Auth::user()->roles->contains('role','Admin'))
                             <li class="nav-item">
-                                <a href="" class="nav-link">Dashboard</a>
+                                <a href="{{route('member.dashboard')}}" class="nav-link">Dashboard</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('page.departments')}}" class="nav-link">Departments</a>
