@@ -28,6 +28,7 @@
                         <td>
                             <a class="btn btn-primary btn-sm" href="{{route('report.print.event', ['event_id'=> $event->id])}}" target="__blank">Print Report</a>
                             <a href="{{route('payment.review',['event_id'=>$event->id])}}" class="btn btn-primary btn-sm">View Payments</a>
+                            <a href="{{route('validator.page',['event_id'=>encrypt($event->id)])}}" class="btn btn-primary btn-sm">Validate</a>
                         </td>
                     </tr>
                 @endforeach

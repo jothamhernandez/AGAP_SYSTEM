@@ -33,7 +33,8 @@
                         <div class="col-md-3">
                             <div class="card card-default">
                                 <div class="card-header agap-primary-color">
-                                    {{$event->title}} ({{$event->fee->status}})
+                                    {{$event->fee->id . $event->fee->user_id}}
+                                    {{$event->title}} ({{$event->fee->status}});
                                 </div>
                                 <div class="card-body">
                                     @if($event->header_image != null)
@@ -42,6 +43,7 @@
                                     </figure>
                                     @endif
                                     <p>{{date('F d, Y', strtotime($event->start))}} - {{date('F d, Y', strtotime($event->end))}}</p>
+                                    <p>Event Code: @generate_event_code($event->fee->id . $event->fee->user_id)</p>
                                 </div>
                                 <div class="card-footer">
                                     @if(Auth::user()->roles->contains('role','Admin') || Auth::user()->roles->contains('role','Super Admin'))
