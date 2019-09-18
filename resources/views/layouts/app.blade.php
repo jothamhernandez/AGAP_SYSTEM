@@ -129,6 +129,7 @@
         @if(Auth::user() && Auth::user()->done_instruction == 0)
         <instruction-component></instruction-component>
         @endif
+        <feedback-component></feedback-component>
     </div>
 
     <footer class="agap-primary-color py-4">

@@ -5,3 +5,5 @@ Vue.component('account-form', require('./components/account/AccountInformationCo
 Vue.component('online-presence', require('./components/websocket/OnlinePresenceComponent').default);
 
 Vue.component('instruction-component', require('./components/instruction/InstructionComponent').default);
+
+Vue.component('feedback-component', require('./components/feedback/FeedbackComponent').default);

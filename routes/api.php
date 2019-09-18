@@ -31,3 +31,5 @@ Route::group(['middleware'=>'auth:api','prefix'=>'v1'], function(){
 Route::group(['prefix'=>'v1','middleware'=>['auth:api']], function(){
     Route::resource('user', 'Api\User');
 });
+
+Route::post("v1/feedback", 'Api\Feedback@store');
