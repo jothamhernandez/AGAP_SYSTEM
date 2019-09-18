@@ -42,8 +42,8 @@ class UserReport implements FromCollection, WithHeadings{
             return [
                 'Username'=>$rec->username,
                 'Email'=>$rec->email,
-                'Registered Date'=> ($rec->created_at) ? "YES" : "NO",
-                'Verification Status' => $rec->email_verified_at,
+                'Registered Date'=>$rec->created_at,
+                'Verification Status' => ($rec->email_verified_at) ? "YES" : "NO",
                 'First Name' => $rec->first_name,
                 'Middle Name' => $rec->middle_name,
                 'Last Name' => $rec->last_name,
@@ -56,7 +56,7 @@ class UserReport implements FromCollection, WithHeadings{
             ];
         });
 
-        dd($data);
+        // dd($data);
         return $data;
     }
 }
