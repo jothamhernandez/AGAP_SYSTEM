@@ -1,6 +1,6 @@
 <template>
   <div class="feedback-component">
-    <div class="feedback-button" @click="toggleForm">Feedback</div>
+    <div class="feedback-button" @click="toggleForm"><span class="fa fa-comment"></span> Feedback</div>
     <div class="feedback-overlay" v-if="isShown" @click="toggleForm">
       <div class="card card-default feedback-panel" @click="preventDefault">
         <div class="card-header agap-primary-color">Feedback Form</div>
@@ -125,6 +125,7 @@ export default {
   cursor: pointer;
 }
 .feedback-button:hover {
+  background-color: #4242f7;
   padding-bottom: 10px;
 }
 </style>
