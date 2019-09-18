@@ -11,7 +11,7 @@ class UserReport implements FromCollection, WithHeadings{
 
     public function headings():array {
         return [
-            'Username','Email','Registered Date','First Name','Middle Name','Last Name','Birthdate','Gender','LLOU','Department','Sector','BSGC Status'
+            'Username','Email','Registered Date', 'Verification Status', 'First Name','Middle Name','Last Name','Birthdate','Gender','LLOU','Department','Sector','BSGC Status'
         ];
     }
 
@@ -24,6 +24,7 @@ class UserReport implements FromCollection, WithHeadings{
             'users.email',
             'users.created_at',
             'user_infos.first_name',
+            'users.email_verified_at',
             'user_infos.middle_name',
             'user_infos.last_name',
             'user_infos.birthdate',
@@ -41,7 +42,8 @@ class UserReport implements FromCollection, WithHeadings{
             return [
                 'Username'=>$rec->username,
                 'Email'=>$rec->email,
-                'Registered Date'=>$rec->created_at,
+                'Registered Date'=> ($rec->created_at) ? "YES" : "NO",
+                'Verification Status' => $rec->email_verified_at,
                 'First Name' => $rec->first_name,
                 'Middle Name' => $rec->middle_name,
                 'Last Name' => $rec->last_name,
@@ -53,6 +55,8 @@ class UserReport implements FromCollection, WithHeadings{
                 'BSGC Status' => $rec->bsgc_status
             ];
         });
+
+        dd($data);
         return $data;
     }
 }
