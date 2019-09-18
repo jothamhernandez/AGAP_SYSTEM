@@ -52,6 +52,7 @@ Route::group(['prefix'=>'agencies','middleware'=>['auth','super_admin']], functi
 Route::group(['prefix'=>'reports', 'middleware'=>['auth','super_admin']], function(){
     Route::get('/', 'ReportController@index')->name('page.reports');
     Route::get('/print/{event_id}', 'ReportController@export')->name('report.print.event');
+    Route::get('/users/print', 'ReportController@userExport')->name('report.user.list');
 });
 
 Route::group(['prefix'=>'payments', 'middleware'=>['auth','super_admin']], function(){

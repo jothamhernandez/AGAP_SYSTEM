@@ -6,7 +6,7 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h1>Members {{$members->total()}}</h1></div>
+                    <div class="card-header"><h1 class="float-left">Members {{$members->total()}}</h1> <a href="{{ route('report.user.list') }}" class="btn btn-success float-right">Download List</a></div>
                     <div class="card-body">
                         <form action="#" method="GET">
                             <div class="from-group row">
