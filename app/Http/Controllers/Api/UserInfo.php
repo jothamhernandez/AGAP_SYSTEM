@@ -59,7 +59,12 @@ class UserInfo extends Controller
     public function update(Request $request, $id)
     {
         
-        $userInfo = $this->model->update($request->only($this->model->getModel()->getFillable()), $id);
+        $data = $request->only($this->model->getModel()->getFillable());
+
+        $data['first_name'] = ucfirst(strtolower(@$data['first_name']));
+        $data['last_name'] = ucfirst(strtolower(@$data['last_name']));
+        $data['middle_name'] = ucfirst(strtolower(@$data['middle_name']));
+        $userInfo = $this->model->update($data, $id);
         
 
         return $this->show($id);
