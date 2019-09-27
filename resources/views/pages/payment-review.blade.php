@@ -39,7 +39,7 @@
                     <tr>
                         <td style="vertical-align: middle;">{{$registered->user->info->fullname()}}</td>
                         <td style="vertical-align: middle;">{{@$registered->user->info->agency->department->display_name}}</td>
-                        <td style="vertical-align: middle;">{{$registered->user->info->agency->name}}</td>
+                        <td style="vertical-align: middle;">{{@$registered->user->info->agency->name}}</td>
                         <td style="vertical-align: middle;">Php @convert($registered->fee->fee)</td>
                         <td style="vertical-align: middle;" class="text-center">
                             @if($registered->supporting_doc != null)
