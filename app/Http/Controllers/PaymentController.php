@@ -8,17 +8,34 @@ use App\Models\RegisteredUser;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\NotifyEventStatus;
 use App\User;
+use Illuminate\Support\Facades\Input;
 
 class PaymentController extends Controller
 {
     //
 
     public function review(Request $request, $event_id){
-        $event = Event::where('id', $event_id)->with(['registered'=>function($q){
+        $event = Event::find($event_id);
+        
+        // ->with(['registered'=>function($q){
+        //     $q->whereNotIn('user_id',explode(',',env("EXEMPTED_USERS",'5')));
+        //     $q->orderBy('status','desc');
+        // }])->first();
+        
+        if(!$request->status){
+            $status = "pending";
+        } else {
+            $status = $request->status;
+        }
+
+        $registered = RegisteredUser::where(function($q) use ($event_id, $status){
+            $q->where('event_id', $event_id);
             $q->whereNotIn('user_id',explode(',',env("EXEMPTED_USERS",'5')));
+            $q->where('status', $status);
             $q->orderBy('status','desc');
-        }])->first();
-        return view('pages.payment-review')->with(['event'=>$event]);
+        })->paginate();
+
+        return view('pages.payment-review')->with(['event'=>$event,'registered_users' => $registered->appends(Input::except('page'))]);
     }
 
     public function paid(Request $request, $registered_id){
