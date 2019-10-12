@@ -54,7 +54,7 @@
                 <tbody>
                     @foreach($registered_users as $registered)
                     <tr>
-                        <td style="vertical-align: middle;">{{$registered->user->info->fullname()}}</td>
+                        <td style="vertical-align: middle;"><a href="mailto:{{$registered->user->email}}" target="_blank"  rel="noopener noreferrer" title="Send mail to {{$registered->user->info->fullname()}}">{{$registered->user->info->fullname()}}</a></td>
                         <td style="vertical-align: middle;">{{@$registered->user->info->agency->department->display_name}}</td>
                         <td style="vertical-align: middle;">{{@$registered->user->info->agency->name}}</td>
                         <td style="vertical-align: middle;">Php @convert($registered->fee->fee)</td>
