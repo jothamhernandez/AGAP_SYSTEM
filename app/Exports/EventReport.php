@@ -28,7 +28,7 @@ class EventReport implements FromCollection, WithHeadings{
             return [
                 'Member'    => ($rec->user->info->fullname() != ' ') ? $rec->user->info->fullname() : $rec->user->username,
                 'Sector'    => @$rec->user->info->agency->sector,
-                'Agency'    => $rec->user->info->agency->name,
+                'Agency'    => @$rec->user->info->agency->name,
                 'LLOU'      => $rec->user->info->llou,
                 'Registration Date' => $rec->created_at->format('Y-m-d'),
                 'Fee'       => $rec->fee->fee,
