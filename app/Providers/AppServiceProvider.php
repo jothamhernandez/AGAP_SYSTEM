@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(161);
 
         User::observe(UserObserver::class);
-        
+
         Blade::directive('convert', function ($money) {
             return "<?php echo number_format($money, 2); ?>";
         });
@@ -39,5 +39,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('generate_event_code', function ($event) {
             return "<?php echo substr(md5($event), 10, 5); ?>";
         });
+
+        if ($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
     }
 }
