@@ -107,6 +107,7 @@
                 (02) 657-3300 Local 2647 | (02) 735-1987 <br>
                 Department of Budget and Management <br>
                 DBM Bldg. II General Solano St. San Miguel, Manila<br>
+                <strong>Availabilty Time: 8:00am to 5:00pm<strong><br>
             </div>
         </div>
     </div>
