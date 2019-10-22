@@ -92,7 +92,7 @@
         </div>
         @endif
         @endif
-        <div class="row mt-5 text-right">
+        {{-- <div class="row mt-5 text-right">
             <div class="col-md-12">
                 <h3>Inquiries</h3>
             </div>
@@ -102,7 +102,7 @@
                 <strong>(Globe): </strong> 0977-1817500 <br>
                 <strong>Email: </strong> lsalas@dbm.gov.ph <br>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
