@@ -92,17 +92,23 @@
         </div>
         @endif
         @endif
-        {{-- <div class="row mt-5 text-right">
+        <div class="row mt-5 text-right">
             <div class="col-md-12">
                 <h3>Inquiries</h3>
             </div>
             <div class="col-md-12">
-                For Inquiries, kindly contact <strong>Ms. Lani Salas</strong><br>
+                For Inquiries, kindly contact: <br>
+                {{-- <strong>Ms. Lani Salas</strong><br>
                 <strong>(Smart): </strong> 0920-9776895 <br>
                 <strong>(Globe): </strong> 0977-1817500 <br>
-                <strong>Email: </strong> lsalas@dbm.gov.ph <br>
+                <strong>Email: </strong> lsalas@dbm.gov.ph <br> --}}
+
+                <strong>Diana Apostol | Lani Salas | Laurice Salud</strong> <br>
+                (02) 657-3300 Local 2647 | (02) 735-1987 <br>
+                Department of Budget and Management <br>
+                DBM Bldg. II General Solano St. San Miguel, Manila<br>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>
 
