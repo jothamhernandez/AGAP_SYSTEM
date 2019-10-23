@@ -34,13 +34,17 @@
                     @endif
                     
                 </div>
-                @if(!$registered)
+                @if(!$registered && $event->start >= \Carbon\Carbon::now())
                 <div class="col-md-12">
                     <h3>Register</h3>
-
                     @foreach($fees as $fee)
                     <p>{{$fee->description}} - {{$fee->fee}} <a href="{{route('event.register', ['id'=>$event->id, 'fee'=>$fee->id])}}" class="btn btn-success">Register</a></p>
                     @endforeach
+                </div>
+            </div>
+            @elseif($event->start <= \Carbon\Carbon::now())
+                <div class="col-md-12">
+                    <h3 class="text-center jumbotron">Registration is closed</h3>
                 </div>
             </div>
             @else
