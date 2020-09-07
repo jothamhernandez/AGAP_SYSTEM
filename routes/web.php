@@ -140,5 +140,9 @@ Route::group(['prefix'=>'artisan'], function(){
         echo Artisan::call('optimize:clear');
         return redirect('/home');
     });
+    Route::get('passport-install', function(){
+        echo Artisan::call('passport:install');
+        return redirect('/home');
+    });
 
 });
