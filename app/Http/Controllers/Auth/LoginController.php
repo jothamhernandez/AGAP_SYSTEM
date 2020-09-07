@@ -41,8 +41,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        $user->api_token = str_random(16);
-        
+              
         if($request->ip() == "127.0.0.1"){
             $ip = "112.206.74.227";
             $data = (array) \Location::get($ip);
@@ -54,15 +53,10 @@ class LoginController extends Controller
             LoggedSessions::create(LoggedSessions::format($data, $ip));
         }
 
-        $user->save();
     }
 
     public function logout(Request $request)
     {
-        $user = $request->user();
-        $user->api_token = null;
-        $user->save();
-
         $this->guard()->logout();
 
         $request->session()->invalidate();
