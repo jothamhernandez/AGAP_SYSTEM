@@ -71,11 +71,11 @@ class RegisterController extends Controller
         ]);
     }
     
-    protected function registered(Request $request, $user)
-    {
-        //
-        $user->api_token = str_random(16);
-        $user->save();
-        return false;
-    }
+    // protected function registered(Request $request, $user)
+    // {
+    //     //
+    //     $user->api_token = str_random(16);
+    //     $user->save();
+    //     return false;
+    // }
 }
