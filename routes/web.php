@@ -136,4 +136,9 @@ Route::group(['prefix'=>'artisan'], function(){
         return redirect('/home');
     });
 
+    Route::get('optimize-clear', function(){
+        echo Artisan::call('optimize-clear');
+        return redirect('/home');
+    });
+
 });
