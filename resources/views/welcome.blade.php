@@ -89,14 +89,14 @@
                     <img src="{{asset('imgs/Logo-New.png')}}" alt="" class="img img-fluid">
                 </div>
                 <div class="links">
-                    <a href="">Home</a>
-                    <a href="">History</a>
-                    <a href="">Past Presidents</a>
-                    <a href="">Officers</a>
-                    <a href="">News & Events</a>
-                    <a href="">Conventions/Seminars</a>
-                    <a href="">Constitution & By Laws</a>
-                    <a href="">Contact Us</a>
+                    <a href="https://agap.org.ph/">Home</a>
+                    <a href="https://agap.org.ph/history/">History</a>
+                    <a href="https://agap.org.ph/gallery-of-presidents/">Past Presidents</a>
+                    <a href="https://agap.org.ph/officers/">Officers</a>
+                    <a href="https://agap.org.ph/news-and-events/">News & Events</a>
+                    <a href="https://agap.org.ph/conventions-seminars/">Conventions/Seminars</a>
+                    <a href="https://agap.org.ph/constitution-by-laws/">Constitution & By Laws</a>
+                    <a href="https://agap.org.ph/contact-us/">Contact Us</a>
                 </div>
             </div>
         </div>
