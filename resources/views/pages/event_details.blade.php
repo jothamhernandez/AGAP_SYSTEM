@@ -34,7 +34,12 @@
                     @endif
                     
                 </div>
-                @if(!$registered)
+                @if($event->end < Carbon\Carbon::now())
+                <div class="col-md-12">
+                    
+                    <h3>Event is Closed already</h3>
+                </div>
+                @elseif(!$registered)
                 <div class="col-md-12">
                     <h3>Register</h3>
 
@@ -42,12 +47,13 @@
                     <p>{{$fee->description}} - {{$fee->fee}} <a href="{{route('event.register', ['id'=>$event->id, 'fee'=>$fee->id])}}" class="btn btn-success">Register</a></p>
                     @endforeach
                 </div>
+                @else
+                <div class="col-md-12">
+                    <h3>Registered ({{$registered->status}})</h3>
+                    <p>{{$registered->fee->description}} {{$registered->fee->fee}}</p>
+                </div>
             </div>
-            @else
-            <div class="col-md-12">
-                <h3>Registered ({{$registered->status}})</h3>
-                <p>{{$registered->fee->description}} {{$registered->fee->fee}}</p>
-            </div>
+           
         </div>
         @if(($registered->status == "Unpaid" || $registered->status == "Rejected") && $registered->supporting_doc == null)
         <form action="{{route('event.pay', ['id'=>$registered->event_id,'fee'=>$registered->fee_id])}}" method="POST" enctype="multipart/form-data">
