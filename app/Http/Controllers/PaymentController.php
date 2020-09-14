@@ -8,7 +8,7 @@ use App\Models\RegisteredUser;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\NotifyEventStatus;
 use App\User;
-use Illuminate\Support\Facades\Input;
+// use Illuminate\Support\Facades\Input;
 
 class PaymentController extends Controller
 {
