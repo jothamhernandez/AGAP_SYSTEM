@@ -34,8 +34,7 @@ class PaymentController extends Controller
             $q->where('status', $status);
             $q->orderBy('status','desc');
         })->paginate();
-
-        return view('pages.payment-review')->with(['event'=>$event,'registered_users' => $registered->appends(Request::except('page'))]);
+        return view('pages.payment-review')->with(['event'=>$event,'registered_users' => $registered->appends($request->except('page'))]);
     }
 
     public function paid(Request $request, $registered_id){
