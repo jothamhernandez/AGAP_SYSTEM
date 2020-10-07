@@ -4,6 +4,15 @@
     
 
     <div class="container">
+        @if(session('message'))
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-{{session('class')}} agap-primary-color" role="alert">
+                    {{session('message')}}
+                </div>
+            </div>
+        </div>
+        @endif
         <div class="row">
             <div class="col-md-12">
                 @if (Auth::user()->email_verified_at == null)
@@ -50,7 +59,7 @@
                                     <button class="btn btn-info">
                                         Edit
                                     </button>
-                                    <button class="btn btn-danger">
+                                    <button class="btn btn-danger" >
                                         Delete
                                     </button>
                                     @endif
@@ -89,7 +98,7 @@
 
                         <div class="row">
                         @foreach($events as $event)
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="event-{{$event->id}}">
                             <div class="card card-default">
                                 <div class="card-header agap-primary-color">
                                     {{$event->title}}
@@ -104,10 +113,10 @@
                                 </div>
                                 <div class="card-footer">
                                     @if(Auth::user()->roles->contains('role','Admin') || Auth::user()->roles->contains('role','Super Admin'))
-                                    <button class="btn btn-info">
+                                    <a class="btn btn-info" href="{{route('event.edit',['id'=>encrypt($event->id)])}}">
                                         Edit
-                                    </button>
-                                    <button class="btn btn-danger">
+                                    </a>
+                                    <button class="btn btn-danger" data-action="delete" data-id="{{$event->id}}">
                                         Delete
                                     </button>
                                     @endif
@@ -212,11 +221,29 @@
     @endif
     
     (function(doc){
-        console.log(doc);
+        
         register = function(e){
             
         }
+
+        
     })(window);
+
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        //do work
+
+        $('[data-action=delete]').on('click', function(e){
+            if(confirm('do you really want to delete this event?')){
+                axios.post(`/api/v1/delete-event/${$(e.target).data('id')}`).then((resp)=>{
+                    alert(resp.data.message);
+                    $(`#event-${$(e.target).data('id')}`).remove();
+                });
+            }
+        });
+
+
+    });
+
     
 </script>
 @endsection

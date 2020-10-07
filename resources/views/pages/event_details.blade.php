@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="card card-default">
-    <div class="card-header agap-primary-color">Event Info</div>
+        <div class="card-header agap-primary-color">Event Info</div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">

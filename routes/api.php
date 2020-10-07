@@ -26,6 +26,8 @@ Route::group(['middleware'=>'auth:api','prefix'=>'v1'], function(){
 
 
     Route::post('done-instruction', 'Api\Helpers@updateInstruction');
+
+    Route::post('delete-event/{id}', 'EventController@deleteEvent');
 });
 
 Route::group(['prefix'=>'v1','middleware'=>['auth:api']], function(){

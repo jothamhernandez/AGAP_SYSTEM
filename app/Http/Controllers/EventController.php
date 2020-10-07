@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
+
+    public function __construct(Request $request){
+        $this->request = $request;
+    }
     //
     public function view(Request $request, $id){
         $registeredUser = RegisteredUser::where(['user_id'=>$request->user()->id, 'event_id'=>$id])->first();
@@ -128,5 +132,42 @@ class EventController extends Controller
         }
 
         return response()->json($response);
+    }
+
+
+    public function deleteEvent($id = null){
+        $event = Event::find($id);
+
+        if($this->request->user()->roles->where('role','Super Admin')) {
+            $event->delete();
+            
+            return response()->json(['message'=>'event successfully deleted'], 200);
+        } else {
+            return response()->json(['message'=>'you are not an admin'], 412);
+        }
+
+    }
+
+    public function editEvent($id = null){
+        $event = Event::find(decrypt($id));
+
+        return view('pages.event_edit')->with(['event'=>$event]);
+    }
+
+    public function updateEvent($id){
+        $event = Event::find(decrypt($id));
+        $rules = [
+            'title' => 'required',
+            'description' => 'required',
+            'start' => 'date|required',
+            'end' => 'date|required'
+        ];
+
+        $validated = $this->request->validate($rules);
+        
+        $event->update($validated);
+        $event->save();
+
+        return redirect()->route('page.events')->with(['message'=>'Event Successfully Updated']);
     }
 }

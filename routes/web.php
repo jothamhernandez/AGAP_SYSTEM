@@ -26,6 +26,8 @@ Route::group(['prefix'=>'super_admin','middleware'=>['auth','super_admin']], fun
 
 Route::group(['prefix'=>'members','middleware'=>['auth','completely_verified']], function(){
     Route::group(['prefix'=>'events'], function(){
+        Route::get('/edit-event/{id}', 'EventController@editEvent')->name('event.edit');
+        Route::post('/edit-event/{id}', 'EventController@updateEvent')->name('event.update');
         Route::get('/', 'PageController@events')->name('page.events');
         Route::get('{id}', 'EventController@view')->name('event.view');
         Route::get('register/{id}/{fee}', 'EventController@register')->name('event.register');

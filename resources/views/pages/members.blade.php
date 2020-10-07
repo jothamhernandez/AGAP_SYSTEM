@@ -27,7 +27,7 @@
                                     <th>Verified</th>
                                     <th>Department</th>
                                     <th>Agency</th>
-                                    <th>Action</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,9 +38,9 @@
                                     <td>@if($member->email_verified_at == null) <div class="badge badge-sm badge-danger">No</div> @else <div class="badge badge-sm badge-success">Yes</div> @endif</td>
                                     <td>{{$member->display_name}}</td>
                                     <td>{{$member->name}}</td>
-                                    <td>
+                                    {{-- <td>
                                         <button class="btn btn-info btn-sm">View</button>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
