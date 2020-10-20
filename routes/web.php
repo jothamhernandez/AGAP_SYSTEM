@@ -67,7 +67,7 @@ Route::get('validator/{event_id}', 'EventController@validator_page')->name('vali
 Route::get('validator/{event_id}/{code}', 'EventController@validator')->name('validator.validate');
 
 
-Route::group(['prefix'=>'account'], function(){
+Route::group(['prefix'=>'account','middleware'=>['auth']], function(){
     Route::get('information', 'AccountController@information')->name('page.account_info');
     Route::post('update-information','AccountController@update_information')->name('page.update-account');
 });
