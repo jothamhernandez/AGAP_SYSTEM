@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-group">
                         
-                        <button class="btn btn-success" v-if="user.email_verified_at == null" @click="sendEmailVerification">Send Verification Link</button>
+                        <button class="btn btn-success" v-if="isVerified == null" @click="sendEmailVerification">Send Verification Link</button>
                         
                         <button class="btn btn-primary float-right" @click="updateInfo">Save</button>
                     </div>
@@ -115,6 +115,7 @@ export default {
                 department: null
             },
             user: null,
+            isVerified: null,
             agencies: [
                 {
                     id: 1,
@@ -136,6 +137,7 @@ export default {
     },
     mounted(){
         axios.get('/api/v1/user').then( data =>{
+            this.isVerified = data.data.email_verified_at
             axios.get(`/api/v1/user/info/${data.data.id}`).then( info =>{
                 
                 this.user = info.data;

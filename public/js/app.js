@@ -2105,6 +2105,7 @@ __webpack_require__.r(__webpack_exports__);
         department: null
       },
       user: null,
+      isVerified: null,
       agencies: [{
         id: 1,
         name: "Sample Name",
@@ -2123,6 +2124,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     axios.get('/api/v1/user').then(function (data) {
+      _this2.isVerified = data.data.email_verified_at;
       axios.get("/api/v1/user/info/".concat(data.data.id)).then(function (info) {
         _this2.user = info.data;
         _this2.form.department = _this2.user.agency ? _this2.user.agency.department.id : 0;
@@ -50147,7 +50149,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _vm.user.email_verified_at == null
+                  _vm.isVerified == null
                     ? _c(
                         "button",
                         {
