@@ -87,6 +87,9 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        
+                        <button class="btn btn-success" v-if="user.email_verified_at == null" @click="sendEmailVerification">Send Verification Link</button>
+                        
                         <button class="btn btn-primary float-right" @click="updateInfo">Save</button>
                     </div>
                 </div>
@@ -154,6 +157,13 @@ export default {
             }).catch(error =>{
                 this.response = "There has been an error on updating your information";
             });
+        },
+        sendEmailVerification(){
+            axios.post('/api/v1/send-verification').then(resp => {
+                this.response = "Verification Link successfully sent. Kindly check in span if you can't find it on your inbox."
+            }).catch(err => {
+                this.response = "There has been a problem sending the verification link, please try again later."
+            })
         }
     }
 }

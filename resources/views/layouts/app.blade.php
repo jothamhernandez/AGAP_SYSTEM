@@ -23,9 +23,9 @@
 </head>
 <body>
     <div id="app">
-        @if(Auth::user())
+        {{-- @if(Auth::user())
             <online-presence :user="'{{ Auth::user()->username }}'"></online-presence>
-        @endif
+        @endif --}}
         <header class="agap-primary-color">
             <div class="container">
                 <div class="row py-4">

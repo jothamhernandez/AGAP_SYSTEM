@@ -74,4 +74,14 @@ class User extends Controller
     {
         //
     }
+
+    public function sendEmailVerification(){
+        
+        try {
+            $status = $this->request->user()->sendEmailVerificationNotification();
+            return response()->json(['message'=>'sending success'], 200);
+        } catch(\Exception $e) {
+            return response()->json(['message'=>'sending failed'], 412);
+        }
+    }
 }
