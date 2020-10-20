@@ -15,6 +15,9 @@ class VerifiedAndComplete
      */
     public function handle($request, Closure $next)
     {
+        if(!$request->user()->email_verified_at){
+            return redirect(route('page.account_info'))->with(['message'=>'Please Complete Form and Verify Your Email','class'=>'danger']);
+        }
         if($request->user()->info->first_name == null || $request->user()->info->last_name == null || $request->user()->info->agency_id == 0){
             return redirect(route('page.account_info'))->with(['message'=>'Please Complete Form and Verify Your Email','class'=>'danger']);
         }
