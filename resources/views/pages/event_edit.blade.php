@@ -49,6 +49,14 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-3 col-form-label text-right">
+                                <label for="">Event Materials Link</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="event_materials_link" value="{{$event->event_materials_link}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 col-form-label text-right">
                                 <label for="">Event Start</label>
                             </div>
                             <div class="col-md-9">

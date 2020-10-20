@@ -8,7 +8,7 @@ class Event extends Model
 {
     use SoftDeletes;
     //
-    protected $fillable = ['title','description','header_image','start','end'];
+    protected $fillable = ['title','description','header_image','start','end','event_materials_link'];
 
     public function fee_status(){
         return $this->hasOne('App\Models\RegisteredUser','event_id');
