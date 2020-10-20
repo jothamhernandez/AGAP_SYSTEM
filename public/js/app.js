@@ -2106,6 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       user: null,
       isVerified: null,
+      account: null,
       agencies: [{
         id: 1,
         name: "Sample Name",
@@ -2117,7 +2118,8 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         id: 2,
         name: "title 2"
-      }]
+      }],
+      loading: false
     };
   },
   mounted: function mounted() {
@@ -2125,6 +2127,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/v1/user').then(function (data) {
       _this2.isVerified = data.data.email_verified_at;
+      _this2.account = data.data;
       axios.get("/api/v1/user/info/".concat(data.data.id)).then(function (info) {
         _this2.user = info.data;
         _this2.form.department = _this2.user.agency ? _this2.user.agency.department.id : 0;
@@ -2151,10 +2154,13 @@ __webpack_require__.r(__webpack_exports__);
     sendEmailVerification: function sendEmailVerification() {
       var _this4 = this;
 
+      this.loading = true;
       axios.post('/api/v1/send-verification').then(function (resp) {
-        _this4.response = "Verification Link successfully sent. Kindly check in span if you can't find it on your inbox.";
+        _this4.response = "Verification Link successfully sent to ".concat(_this4.account.email, ". Kindly check in span if you can't find it on your inbox.");
+        _this4.loading = false;
       })["catch"](function (err) {
         _this4.response = "There has been a problem sending the verification link, please try again later.";
+        _this4.loading = false;
       });
     }
   }
@@ -50154,6 +50160,7 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-success",
+                          attrs: { disabled: _vm.loading },
                           on: { click: _vm.sendEmailVerification }
                         },
                         [_vm._v("Send Verification Link")]

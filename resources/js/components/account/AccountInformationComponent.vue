@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-group">
                         
-                        <button class="btn btn-success" v-if="isVerified == null" @click="sendEmailVerification">Send Verification Link</button>
+                        <button class="btn btn-success" v-if="isVerified == null" @click="sendEmailVerification" :disabled="loading">Send Verification Link</button>
                         
                         <button class="btn btn-primary float-right" @click="updateInfo">Save</button>
                     </div>
@@ -116,6 +116,7 @@ export default {
             },
             user: null,
             isVerified: null,
+            account: null,
             agencies: [
                 {
                     id: 1,
@@ -132,12 +133,14 @@ export default {
                     id: 2,
                     name: "title 2"
                 }
-            ]
+            ],
+            loading: false,
         }
     },
     mounted(){
         axios.get('/api/v1/user').then( data =>{
-            this.isVerified = data.data.email_verified_at
+            this.isVerified = data.data.email_verified_at;
+            this.account = data.data;
             axios.get(`/api/v1/user/info/${data.data.id}`).then( info =>{
                 
                 this.user = info.data;
@@ -161,10 +164,13 @@ export default {
             });
         },
         sendEmailVerification(){
+            this.loading = true;
             axios.post('/api/v1/send-verification').then(resp => {
-                this.response = "Verification Link successfully sent. Kindly check in span if you can't find it on your inbox."
+                this.response = `Verification Link successfully sent to ${this.account.email}. Kindly check in span if you can't find it on your inbox.`;
+                this.loading = false;
             }).catch(err => {
-                this.response = "There has been a problem sending the verification link, please try again later."
+                this.response = "There has been a problem sending the verification link, please try again later.";
+                this.loading = false;
             })
         }
     }
