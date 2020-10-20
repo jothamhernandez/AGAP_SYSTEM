@@ -166,7 +166,7 @@ export default {
         sendEmailVerification(){
             this.loading = true;
             axios.post('/api/v1/send-verification').then(resp => {
-                this.response = `Verification Link successfully sent to ${this.account.email}. Kindly check in span if you can't find it on your inbox.`;
+                this.response = `Verification Link successfully sent to ${this.account.email}. Kindly check in your mailbox's Span folder if you can't find it on your inbox.`;
                 this.loading = false;
             }).catch(err => {
                 this.response = "There has been a problem sending the verification link, please try again later.";

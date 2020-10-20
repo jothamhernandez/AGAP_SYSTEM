@@ -2156,7 +2156,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       axios.post('/api/v1/send-verification').then(function (resp) {
-        _this4.response = "Verification Link successfully sent to ".concat(_this4.account.email, ". Kindly check in span if you can't find it on your inbox.");
+        _this4.response = "Verification Link successfully sent to ".concat(_this4.account.email, ". Kindly check in your mailbox's Span folder if you can't find it on your inbox.");
         _this4.loading = false;
       })["catch"](function (err) {
         _this4.response = "There has been a problem sending the verification link, please try again later.";
